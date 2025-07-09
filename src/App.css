@@ -40,3 +40,27 @@
 .read-the-docs {
   color: #888;
 }
+welcome-message {
+  text-align: center;
+  font-size: 2rem;
+  color: #333;
+  margin-top: 40px;
+}
+about {
+  background-color: #f9f9f9;
+  padding: 20px;
+  border-radius: 12px;
+  margin: 20px;
+}
+button {
+  background-color: #4CAF50;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #45a049;
+}

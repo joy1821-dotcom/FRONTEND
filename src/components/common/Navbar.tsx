@@ -28,7 +28,7 @@ const Navbar: React.FC = () => {
       : "/";
 
   return (
-    <nav className="bg-blue-900 flex fixed w-full space-x-4 justify-between items-center text-white p-4 ">
+    <nav className="bg-red-900 flex fixed w-full space-x-4 justify-between items-center text-white p-4 ">
       <h2>Mentorship</h2>
       <ul className="flex space-x-4 justify-center items-center">
         {isAuthenticated() ? (

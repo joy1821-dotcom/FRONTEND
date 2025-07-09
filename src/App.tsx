@@ -21,7 +21,7 @@ function App() {
     <Router>
       <div className="flex flex-col min-h-screen">
         <Navbar />
-        <main className="flex-grow bg-blue-950 min-h-screen">
+        <main className="flex-grow bg-red-950 min-h-screen">
           <Routes>
             <Route path="/" element={<LandingPage />} />
             <Route path="/mentee-dashboard" element={<MenteeDashboard />} />

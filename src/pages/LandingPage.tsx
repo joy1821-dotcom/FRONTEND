@@ -5,9 +5,9 @@ import { Link } from "react-router-dom";
 const LandingPage: React.FC = () => {
   return (
     <section className="bg-white min-h-screen text-gray-800 py-16">
-      <div className="container mx-auto px-4 text-center">
+      <div className="container bg-white-800 mx-auto px-4 text-center">
         <h1 className="text-4xl md:text-5xl font-bold mb-6">
-          Welcome to <span className="text-blue-600">Mentorship</span>
+          Welcome to <span className="text-red-950">Mentorship</span>
         </h1>
         <p className="text-lg md:text-xl mb-8 max-w-2xl mx-auto">
           Connect mentees and mentors in a collaborative, supportive
@@ -17,13 +17,13 @@ const LandingPage: React.FC = () => {
         <div className="flex flex-col md:flex-row justify-center gap-4">
           <Link
             to="/signup"
-            className="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-6 py-3 rounded"
+            className="bg-red-950 hover:bg-red-950 text-white font-semibold px-6 py-3 rounded"
           >
             Get Started
           </Link>
           <Link
             to="/about"
-            className="border border-blue-600 text-blue-600 hover:bg-blue-100 font-semibold px-6 py-3 rounded"
+            className="border border-red-950 text-red-950 hover:bg-red-100 font-semibold px-6 py-3 rounded"
           >
             Learn More
           </Link>
