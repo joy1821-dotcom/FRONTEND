@@ -5,7 +5,7 @@ import Input from "../components/common/Input";
 import ErrorMessage from "../components/common/ErrorMessage";
 import { loginUser } from "../auth/Login.auth";
 import { jwtDecode } from "jwt-decode";
-
+import { Link } from "react-router-dom";
 interface DecodedToken {
   role: string;
   exp: number;
@@ -108,12 +108,12 @@ const LoginForm: React.FC = () => {
         </form>
 
         <div className="flex justify-between mt-4 text-sm text-blue-600">
-          <a href="/password-reset" className="hover:underline">
+          <Link to="/password-reset" className="hover:underline">
             Forgot Password?
-          </a>
-          <a href="/signup" className="hover:underline">
+          </Link>
+          <Link to="/signup" className="hover:underline">
             Create Account
-          </a>
+          </Link>
         </div>
       </div>
     </section>

@@ -2,11 +2,12 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Input from "../components/common/Input";
-
+import { Link } from "react-router-dom";
 const Signup: React.FC = () => {
   const navigate = useNavigate();
-
-  const [formData, setFormData] = useState({
+const baseUrl = import.meta.env.VITE_CLOUD_URL || import.meta.env.VITE_LOCAL_URL;
+ 
+const [formData, setFormData] = useState({
     email: "",
     role: "mentee",
     password: "",
@@ -56,7 +57,7 @@ const Signup: React.FC = () => {
     }
 
     try {
-      const response = await fetch("/api/users/auth/signup", {
+      const response = await fetch(`${baseUrl}/users/auth/register`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),
@@ -136,9 +137,9 @@ const Signup: React.FC = () => {
 
         <div className="text-sm text-center mt-4">
           Already have an account?{" "}
-          <a href="/login" className="text-blue-600 hover:underline">
+          <Link to="/login" className="text-blue-600 hover:underline">
             Login here
-          </a>
+          </Link>
         </div>
       </div>
     </section>
