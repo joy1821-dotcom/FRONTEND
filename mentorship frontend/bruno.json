@@ -1,0 +1,9 @@
+{
+  "version": "1",
+  "name": "mentorship frontend",
+  "type": "collection",
+  "ignore": [
+    "node_modules",
+    ".git"
+  ]
+}

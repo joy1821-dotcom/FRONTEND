@@ -13,7 +13,8 @@ export interface LoginResponse {
 }
 
 export async function loginUser(email: string, password: string): Promise<LoginResponse> {
-    try {const baseUrl = import.meta.env.VITE_CLOUD_URL || import.meta.env.VITE_LOCAL_URL;
+    try {
+        const baseUrl = import.meta.env.VITE_CLOUD_URL || import.meta.env.VITE_LOCAL_URL;
         const response = await fetch(`${baseUrl}/users/auth/login`, {
             method: 'POST',
             headers: {

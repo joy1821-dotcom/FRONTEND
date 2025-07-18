@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Input from "../components/common/Input";
 import { Link } from "react-router-dom";
+import Spinner from "../components/Loader/Spin";
 const Signup: React.FC = () => {
   const navigate = useNavigate();
 const baseUrl = import.meta.env.VITE_CLOUD_URL || import.meta.env.VITE_LOCAL_URL;
@@ -14,6 +15,7 @@ const [formData, setFormData] = useState({
     confirmPassword: "",
   });
 
+  const [loading, setLoading] =useState(false);
   const [error, setError] = useState("");
 
   const handleChange = (
@@ -25,36 +27,38 @@ const [formData, setFormData] = useState({
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setError("");
 
+setError("");
     // Basic input validations
     const { email, password, confirmPassword, role } = formData;
 
     if (!email || !password || !confirmPassword || !role) {
       setError("All fields are required");
-      return;
+     return;
     }
 
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(email)) {
       setError("Please enter a valid email address");
-      return;
+    return;
     }
 
     if (password.length < 6) {
       setError("Password must be at least 6 characters");
-      return;
+    return;
     }
 
     if (password !== confirmPassword) {
       setError("Passwords do not match");
-      return;
+     return;
     }
 
     if (!["mentee", "mentor"].includes(role)) {
       setError("Invalid role selected");
-      return;
+    return;
     }
+
+setLoading(true)
 
     try {
       const response = await fetch(`${baseUrl}/users/auth/register`, {
@@ -67,13 +71,15 @@ const [formData, setFormData] = useState({
 
       if (!response.ok) {
         setError(data.message || "Signup failed");
-        return;
+      return;
       }
 
       navigate("/login");
     } catch (err) {
       console.error("Signup error:", err);
       setError("Something went wrong. Please try again later.");
+    }finally {
+      setLoading(false);
     }
   };
   
@@ -129,10 +135,12 @@ const [formData, setFormData] = useState({
 
           <button
             type="submit"
-            className="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded mt-4"
+            disabled={loading}
+            className="w-full flex items-center justify-center h-8  bg-blue-600 hover:bg-blue-700 text-white font-semibold py-6 px-4 rounded mt-4"
           >
-            Sign Up
+           {loading ? <Spinner/> : "sign up"} 
           </button>
+
         </form>
 
         <div className="text-sm text-center mt-4">
